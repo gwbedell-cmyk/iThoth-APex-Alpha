@@ -1,5 +1,5 @@
 section.main > div {
-    background-color: #0a0f1c;
+    background-color: #f8fafc;
 }
 
 .block-container {
@@ -9,33 +9,29 @@ section.main > div {
 }
 
 h1 {
-    color: #ffffff;
+    color: #0f172a;
     font-size: 2.3rem;
     font-weight: 700;
 }
 
 h2, h3 {
-    color: #f1f5f9;
+    color: #1e293b;
 }
 
 p, div, span, label {
-    color: #ffffff !important;
+    color: #111827 !important;
 }
 
 small {
-    color: #d1d5db !important;
+    color: #475569 !important;
 }
 
 [data-testid="stMetric"] {
-    background: linear-gradient(
-        145deg,
-        rgba(15,23,42,0.95),
-        rgba(30,41,59,0.9)
-    );
-    border: 1px solid rgba(255,255,255,0.08);
+    background: white;
+    border: 1px solid rgba(15,23,42,0.08);
     padding: 18px;
     border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 24px rgba(15,23,42,0.08);
 }
 
 [data-testid="stSidebar"] {
@@ -48,7 +44,7 @@ small {
 }
 
 hr {
-    border-color: rgba(255,255,255,0.08);
+    border-color: rgba(15,23,42,0.08);
 }
 
 .stAlert {
