@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 with open("data/scenarios.json") as f:
     actions = json.load(f)
 
-st.title("Decision Analysis")
+st.title("Governance Decision Center")
 
 selected = st.selectbox(
     "Select Autonomous Action",
@@ -57,21 +57,21 @@ for item in evaluation["explanations"]:
     st.write(f"• {item}")
 
 st.markdown("---")
-st.subheader("Governance Actions")
+st.subheader("Operator Controls")
 
 c1, c2, c3 = st.columns(3)
 
-if c1.button("Approve"):
+if c1.button("Approve Execution"):
     st.success("Execution approved.")
 
 if c2.button("Escalate Review"):
     st.warning("Action escalated for human review.")
 
-if c3.button("Block"):
+if c3.button("Block Execution"):
     st.error("Execution blocked.")
 
 st.markdown("---")
-st.subheader("Executive Override")
+st.subheader("Authorize Executive Override")
 
 override_reason = st.text_area(
     "Business justification required"
