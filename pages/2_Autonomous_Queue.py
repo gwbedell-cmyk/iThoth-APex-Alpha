@@ -26,7 +26,7 @@ for action in actions:
 
 df = pd.DataFrame(rows)
 
-st.title("Autonomous Execution Queue")
+st.title("Live Autonomous Execution Queue")
 st.caption("Live autonomous actions awaiting governance review")
 
 st.dataframe(df, use_container_width=True)
