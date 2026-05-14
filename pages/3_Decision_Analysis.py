@@ -27,6 +27,7 @@ with col1:
     st.write(f"Vendor: {selected['vendor_name']}")
     st.write(f"Invoice: {selected['invoice_id']}")
     st.write(f"Amount: ${selected['amount']:,.0f}")
+    st.write(f"Agent Confidence: {int(selected['confidence'] * 100)}%")
 
 with col2:
     st.markdown(
