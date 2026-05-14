@@ -1,13 +1,22 @@
 import streamlit as st
 import json
+import pandas as pd
+import plotly.express as px
+
 from services.evaluator import evaluate_action
+from services.audit import record_decision
 
 st.set_page_config(layout="wide")
 
 with open("data/scenarios.json") as f:
     actions = json.load(f)
 
-evaluations = [evaluate_action(a) for a in actions]
+evaluations = []
+
+for action in actions:
+    evaluation = evaluate_action(action)
+    record_decision(action, evaluation)
+    evaluations.append(evaluation)
 
 blocked = sum(1 for e in evaluations if e["decision"] in ["BLOCK", "HARD BLOCK"])
 review = sum(1 for e in evaluations if e["decision"] == "REVIEW")
@@ -28,6 +37,43 @@ with col3:
 
 with col4:
     st.metric("Review Queue", review)
+
+st.markdown("---")
+
+rows = []
+
+for action, evaluation in zip(actions, evaluations):
+    rows.append({
+        "Vendor": action["vendor_name"],
+        "Decision": evaluation["decision"],
+        "Risk Score": evaluation["risk_score"],
+        "Amount": action["amount"]
+    })
+
+df = pd.DataFrame(rows)
+
+left, right = st.columns(2)
+
+with left:
+    st.subheader("Decision Distribution")
+
+    fig = px.pie(
+        df,
+        names="Decision"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+with right:
+    st.subheader("Risk Scores by Vendor")
+
+    fig = px.bar(
+        df,
+        x="Vendor",
+        y="Risk Score"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
