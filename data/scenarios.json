@@ -1,1 +1,32 @@
-
+[
+  {
+    "id": "ACT-001",
+    "agent_id": "AEX-001",
+    "action_type": "Payment Authorization",
+    "vendor_name": "Acme Industrial Supply",
+    "invoice_id": "INV-77821",
+    "amount": 48200,
+    "currency": "USD",
+    "confidence": 0.94,
+    "po_amount": 43000,
+    "bank_changed_days": 3,
+    "duplicate_similarity": 0.87,
+    "approval_complete": false,
+    "vendor_risk_score": 0.63
+  },
+  {
+    "id": "ACT-002",
+    "agent_id": "AEX-002",
+    "action_type": "Payment Authorization",
+    "vendor_name": "Northshore Logistics",
+    "invoice_id": "INV-55312",
+    "amount": 18500,
+    "currency": "USD",
+    "confidence": 0.97,
+    "po_amount": 18500,
+    "bank_changed_days": 120,
+    "duplicate_similarity": 0.02,
+    "approval_complete": true,
+    "vendor_risk_score": 0.11
+  }
+]
