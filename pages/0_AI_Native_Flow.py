@@ -5,25 +5,25 @@ from services.ui_helpers import decision_color
 
 st.set_page_config(layout="wide")
 
-st.title("AI-native Flow")
-st.caption("Enterprise context ingestion, AI analysis, and governed execution")
+st.title("AI-native Enterprise Flow")
+st.caption("Enterprise context enters. AI proposes. APex governs.")
 
 st.markdown("---")
 
 uploaded_files = st.file_uploader(
-    "Drop enterprise artifacts here",
+    "Drop invoices, contracts, ERP exports, or vendor records here",
     accept_multiple_files=True
 )
 
 workflow_prompt = st.text_area(
-    "AI Workflow Instruction",
+    "Execution Objective",
     placeholder="Example: Review attached invoices, validate vendor consistency, identify payment candidates, and generate an execution proposal."
 )
 
 st.markdown("---")
 
-if st.button("Analyze with AI"):
-    st.success("Enterprise artifacts analyzed. Proposed autonomous execution generated.")
+if st.button("Generate Execution Proposal"):
+    st.success("Execution proposal generated from enterprise context.")
 
     with open("data/scenarios.json") as f:
         actions = json.load(f)
