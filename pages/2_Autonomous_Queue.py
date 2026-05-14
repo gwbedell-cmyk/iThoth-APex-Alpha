@@ -19,7 +19,7 @@ for action in actions:
         "Action": action["action_type"],
         "Vendor": action["vendor_name"],
         "Amount": f"${action['amount']:,.0f}",
-        "Confidence": f"{int(action['confidence'] * 100)}%",
+        "Agent Confidence": f"{int(action['confidence'] * 100)}%",
         "Decision": evaluation["decision"],
         "Risk": evaluation["risk_score"]
     })
