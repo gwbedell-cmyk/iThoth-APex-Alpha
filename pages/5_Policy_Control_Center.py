@@ -7,7 +7,7 @@ with open("data/policies.json") as f:
     policies = json.load(f)
 
 st.title("Policy Control Center")
-st.caption("Governance controls for autonomous enterprise execution")
+st.caption("Operational trust controls for autonomous execution")
 
 for policy in policies:
     with st.container():
