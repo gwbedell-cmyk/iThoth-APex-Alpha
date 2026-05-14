@@ -40,11 +40,8 @@ small {
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
-/* METRIC TEXT */
-[data-testid="stMetric"] label,
-[data-testid="stMetric"] div,
-[data-testid="stMetric"] span {
-    color: #ffffff !important;
+[data-testid="stMetric"] * {
+    color: white !important;
 }
 
 /* SIDEBAR */
