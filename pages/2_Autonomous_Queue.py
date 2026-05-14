@@ -21,11 +21,12 @@ for action in actions:
         "Amount": f"${action['amount']:,.0f}",
         "Confidence": f"{int(action['confidence'] * 100)}%",
         "Decision": evaluation["decision"],
-        "Risk Score": evaluation["risk_score"]
+        "Risk": evaluation["risk_score"]
     })
 
-st.title("Autonomous Execution Queue")
-st.caption("Live autonomous actions awaiting governance evaluation")
-
 df = pd.DataFrame(rows)
+
+st.title("Autonomous Execution Queue")
+st.caption("Live autonomous actions awaiting governance review")
+
 st.dataframe(df, use_container_width=True)

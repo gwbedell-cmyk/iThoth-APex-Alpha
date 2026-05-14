@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from services.evaluator import evaluate_action
+from services.ui_helpers import decision_color
 
 st.set_page_config(layout="wide")
 
@@ -33,8 +34,23 @@ with col1:
 with col2:
     st.subheader("APex Trust Evaluation")
 
-    st.metric("Decision", evaluation["decision"])
-    st.metric("Risk Score", evaluation["risk_score"])
+    color = decision_color(evaluation["decision"])
+
+st.markdown(
+    f"""
+    <div style="
+        background:{color};
+        padding:20px;
+        border-radius:16px;
+        color:white;
+        text-align:center;
+    ">
+        <h2>{evaluation['decision']}</h2>
+        <h3>Risk Score: {evaluation['risk_score']}</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown("---")
 
