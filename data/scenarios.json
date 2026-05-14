@@ -28,5 +28,50 @@
     "duplicate_similarity": 0.02,
     "approval_complete": true,
     "vendor_risk_score": 0.11
+  },
+  {
+    "id": "ACT-003",
+    "agent_id": "AEX-003",
+    "action_type": "Vendor Master Change",
+    "vendor_name": "Global Precision Parts",
+    "invoice_id": "N/A",
+    "amount": 0,
+    "currency": "USD",
+    "confidence": 0.88,
+    "po_amount": 0,
+    "bank_changed_days": 1,
+    "duplicate_similarity": 0.0,
+    "approval_complete": false,
+    "vendor_risk_score": 0.72
+  },
+  {
+    "id": "ACT-004",
+    "agent_id": "AEX-004",
+    "action_type": "Expense Reimbursement",
+    "vendor_name": "Executive Travel Services",
+    "invoice_id": "EXP-9921",
+    "amount": 6400,
+    "currency": "USD",
+    "confidence": 0.91,
+    "po_amount": 6400,
+    "bank_changed_days": 45,
+    "duplicate_similarity": 0.0,
+    "approval_complete": false,
+    "vendor_risk_score": 0.21
+  },
+  {
+    "id": "ACT-005",
+    "agent_id": "AEX-005",
+    "action_type": "Refund Authorization",
+    "vendor_name": "Client Settlement Group",
+    "invoice_id": "RF-4411",
+    "amount": 92000,
+    "currency": "USD",
+    "confidence": 0.93,
+    "po_amount": 50000,
+    "bank_changed_days": 5,
+    "duplicate_similarity": 0.91,
+    "approval_complete": false,
+    "vendor_risk_score": 0.82
   }
 ]
