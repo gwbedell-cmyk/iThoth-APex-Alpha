@@ -1,7 +1,10 @@
 import streamlit as st
 import json
+from datetime import datetime
+
 from services.evaluator import evaluate_action
 from services.ui_helpers import decision_color
+from services.audit import load_audit_log, save_audit_log
 
 st.set_page_config(layout="wide")
 
@@ -52,3 +55,45 @@ st.subheader("Triggered Findings")
 
 for item in evaluation["explanations"]:
     st.write(f"• {item}")
+
+st.markdown("---")
+st.subheader("Governance Actions")
+
+c1, c2, c3 = st.columns(3)
+
+if c1.button("Approve"):
+    st.success("Execution approved.")
+
+if c2.button("Escalate Review"):
+    st.warning("Action escalated for human review.")
+
+if c3.button("Block"):
+    st.error("Execution blocked.")
+
+st.markdown("---")
+st.subheader("Executive Override")
+
+override_reason = st.text_area(
+    "Business justification required"
+)
+
+if st.button("Override Decision"):
+    if override_reason.strip():
+        log = load_audit_log()
+
+        log.append({
+            "timestamp": datetime.utcnow().isoformat(),
+            "action_id": selected["id"],
+            "agent_id": selected["agent_id"],
+            "vendor_name": selected["vendor_name"],
+            "decision": "EXECUTIVE OVERRIDE",
+            "risk_score": evaluation["risk_score"],
+            "triggered_policies": evaluation["triggered_policies"],
+            "findings": [override_reason]
+        })
+
+        save_audit_log(log)
+
+        st.success("Executive override recorded in Black Box Recorder.")
+    else:
+        st.error("Override justification required.")
