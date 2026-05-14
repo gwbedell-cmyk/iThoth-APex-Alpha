@@ -1,0 +1,37 @@
+[
+  {
+    "id": "P-12",
+    "name": "Vendor Change Risk",
+    "description": "Flags recently modified vendor banking details.",
+    "weight": 30,
+    "enabled": true
+  },
+  {
+    "id": "P-19",
+    "name": "Approval Completeness",
+    "description": "Ensures approval chain is complete.",
+    "weight": 20,
+    "enabled": true
+  },
+  {
+    "id": "P-27",
+    "name": "Duplicate Detection",
+    "description": "Detects near-duplicate invoice submissions.",
+    "weight": 35,
+    "enabled": true
+  },
+  {
+    "id": "P-31",
+    "name": "Threshold Variance",
+    "description": "Flags invoice variance beyond approved PO tolerance.",
+    "weight": 15,
+    "enabled": true
+  },
+  {
+    "id": "P-42",
+    "name": "Vendor Risk Escalation",
+    "description": "Escalates high-risk vendor profiles.",
+    "weight": 10,
+    "enabled": true
+  }
+]
