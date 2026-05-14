@@ -1,1 +1,108 @@
-[]
+[
+  {
+    "timestamp": "2026-05-14T09:14:22Z",
+    "action_id": "ACT-091",
+    "agent_id": "AEX-091",
+    "vendor_name": "Northshore Logistics",
+    "decision": "ALLOW",
+    "risk_score": 10,
+    "triggered_policies": [],
+    "findings": []
+  },
+  {
+    "timestamp": "2026-05-14T09:41:07Z",
+    "action_id": "ACT-092",
+    "agent_id": "AEX-092",
+    "vendor_name": "Acme Industrial Supply",
+    "decision": "REVIEW",
+    "risk_score": 50,
+    "triggered_policies": [
+      "P-19 Approval Completeness"
+    ],
+    "findings": [
+      "Approval chain incomplete"
+    ]
+  },
+  {
+    "timestamp": "2026-05-14T10:03:54Z",
+    "action_id": "ACT-093",
+    "agent_id": "AEX-093",
+    "vendor_name": "Global Precision Parts",
+    "decision": "BLOCK",
+    "risk_score": 75,
+    "triggered_policies": [
+      "P-12 Vendor Change Risk",
+      "P-42 Vendor Risk Escalation"
+    ],
+    "findings": [
+      "Vendor banking details changed recently",
+      "Elevated vendor risk profile"
+    ]
+  },
+  {
+    "timestamp": "2026-05-14T10:28:31Z",
+    "action_id": "ACT-094",
+    "agent_id": "AEX-094",
+    "vendor_name": "Cloud Infrastructure Partners",
+    "decision": "ALLOW",
+    "risk_score": 15,
+    "triggered_policies": [],
+    "findings": []
+  },
+  {
+    "timestamp": "2026-05-14T11:07:18Z",
+    "action_id": "ACT-095",
+    "agent_id": "AEX-095",
+    "vendor_name": "Rapid Medical Supply",
+    "decision": "REVIEW",
+    "risk_score": 45,
+    "triggered_policies": [
+      "P-19 Approval Completeness"
+    ],
+    "findings": [
+      "Approval chain incomplete"
+    ]
+  },
+  {
+    "timestamp": "2026-05-14T11:52:42Z",
+    "action_id": "ACT-096",
+    "agent_id": "AEX-096",
+    "vendor_name": "Treasury Liquidity Partner",
+    "decision": "HARD BLOCK",
+    "risk_score": 105,
+    "triggered_policies": [
+      "P-12 Vendor Change Risk",
+      "P-19 Approval Completeness",
+      "P-42 Vendor Risk Escalation"
+    ],
+    "findings": [
+      "Vendor banking details changed recently",
+      "Approval chain incomplete",
+      "Elevated vendor risk profile"
+    ]
+  },
+  {
+    "timestamp": "2026-05-14T12:36:55Z",
+    "action_id": "ACT-097",
+    "agent_id": "AEX-097",
+    "vendor_name": "Euro Manufacturing GmbH",
+    "decision": "ALLOW",
+    "risk_score": 12,
+    "triggered_policies": [],
+    "findings": []
+  },
+  {
+    "timestamp": "2026-05-14T13:11:23Z",
+    "action_id": "ACT-098",
+    "agent_id": "AEX-098",
+    "vendor_name": "Executive Travel Services",
+    "decision": "EXECUTIVE OVERRIDE",
+    "risk_score": 40,
+    "triggered_policies": [
+      "P-19 Approval Completeness"
+    ],
+    "findings": [
+      "CEO travel reimbursement exception approved."
+    ]
+  }
+]
