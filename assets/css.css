@@ -44,7 +44,7 @@ small {
 [data-testid="stMetric"] label,
 [data-testid="stMetric"] div,
 [data-testid="stMetric"] span {
-    color: white !important;
+    color: #ffffff !important;
 }
 
 /* SIDEBAR */
