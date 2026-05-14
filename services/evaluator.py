@@ -18,12 +18,13 @@ def evaluate_action(action):
         explanations.append("Approval chain incomplete")
         triggered_policies.append("P-19 Approval Completeness")
 
-    po_variance = (action["amount"] - action["po_amount"]) / action["po_amount"]
+    if action["po_amount"] > 0:
+        po_variance = (action["amount"] - action["po_amount"]) / action["po_amount"]
 
-    if po_variance > 0.10:
-        risk += 15
-        explanations.append("Invoice exceeds approved PO threshold")
-        triggered_policies.append("P-31 Threshold Variance")
+        if po_variance > 0.10:
+            risk += 15
+            explanations.append("Invoice exceeds approved PO threshold")
+            triggered_policies.append("P-31 Threshold Variance")
 
     if action["vendor_risk_score"] > 0.5:
         risk += 10
