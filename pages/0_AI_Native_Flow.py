@@ -5,10 +5,26 @@ from services.ui_helpers import decision_color
 
 st.set_page_config(layout="wide")
 
+with open("data/scenarios.json") as f:
+    actions = json.load(f)
+
+scenario_map = {
+    "Clean Payment": "ACT-002",
+    "Duplicate Invoice Fraud": "ACT-001",
+    "Vendor Account Takeover": "ACT-003",
+    "Treasury Anomaly": "ACT-008",
+    "Executive Exception": "ACT-004"
+}
+
 st.title("AI-native Enterprise Flow")
 st.caption("Enterprise context enters. AI proposes. APex governs.")
 
 st.markdown("---")
+
+preset = st.selectbox(
+    "Demo Scenario Preset",
+    list(scenario_map.keys())
+)
 
 uploaded_files = st.file_uploader(
     "Drop invoices, contracts, ERP exports, or vendor records here",
@@ -17,20 +33,23 @@ uploaded_files = st.file_uploader(
 
 workflow_prompt = st.text_area(
     "Execution Objective",
-    placeholder="Example: Review attached invoices, validate vendor consistency, identify payment candidates, and generate an execution proposal."
+    placeholder="Review enterprise artifacts, identify execution candidates, and generate a governed proposal."
 )
 
 st.markdown("---")
 
 if st.button("Generate Execution Proposal"):
-    st.success("Execution proposal generated from enterprise context.")
+    selected_id = scenario_map[preset]
 
-    with open("data/scenarios.json") as f:
-        actions = json.load(f)
+    proposed = next(
+        a for a in actions
+        if a["id"] == selected_id
+    )
 
-    proposed = actions[0]
     evaluation = evaluate_action(proposed)
     color = decision_color(evaluation["decision"])
+
+    st.success("Execution proposal generated from enterprise context.")
 
     col1, col2 = st.columns(2)
 
