@@ -22,7 +22,7 @@ blocked = sum(1 for e in evaluations if e["decision"] in ["BLOCK", "HARD BLOCK"]
 review = sum(1 for e in evaluations if e["decision"] == "REVIEW")
 total_value = sum(a["amount"] for a in actions)
 
-st.title("Executive Dashboard")
+st.title("Executive trust Dashboard")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -55,7 +55,7 @@ df = pd.DataFrame(rows)
 left, right = st.columns(2)
 
 with left:
-    st.subheader("Decision Distribution")
+    st.subheader("Autonomous Decision Distribution")
 
     fig = px.pie(
         df,
@@ -65,7 +65,7 @@ with left:
     st.plotly_chart(fig, use_container_width=True)
 
 with right:
-    st.subheader("Risk Scores by Vendor")
+    st.subheader("Risk Exposure by Vendor")
 
     fig = px.bar(
         df,
