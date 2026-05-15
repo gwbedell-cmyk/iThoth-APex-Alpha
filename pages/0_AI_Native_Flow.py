@@ -5,6 +5,12 @@ from services.ui_helpers import decision_color
 
 st.set_page_config(layout="wide")
 
+def load_css():
+    with open("assets/css.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
+
 with open("data/scenarios.json") as f:
     actions = json.load(f)
 
@@ -143,7 +149,7 @@ if selected_artifact:
 
     st.markdown("---")
 
-    if evaluation["risk_score"] <= 25:
+    if evaluation["risk_score"] == 0:
         if st.button("Execute"):
             st.success("Execution initiated.")
     else:
