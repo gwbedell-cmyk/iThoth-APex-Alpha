@@ -48,21 +48,24 @@ st.markdown("---")
 
 st.markdown("### APex Trust Evaluation")
 
-st.markdown(
-    f"""
-    <div style="
-        background:{color};
-        padding:24px;
-        border-radius:16px;
-        color:white;
-        text-align:center;
-    ">
-        <h2>{evaluation['decision']}</h2>
-        <h3>APex Risk Score: {evaluation['risk_score']}</h3>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+trust_col = st.columns([1, 1])
+
+with trust_col[0]:
+    st.markdown(
+        f"""
+        <div style="
+            background:{color};
+            padding:24px;
+            border-radius:16px;
+            color:white !important;
+            text-align:center;
+        ">
+            <h2 style="color:white !important;">{evaluation['decision']}</h2>
+            <h3 style="color:white !important;">APex Risk Score: {evaluation['risk_score']}</h3>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 st.markdown("---")
 
@@ -74,28 +77,24 @@ risk = evaluation["risk_score"]
 
 with button_col[0]:
     execute_clicked = False
-    if risk <= 25:
-        execute_clicked = st.button("Execute")
-    elif risk < 75:
-        execute_clicked = st.button("Execute")
-    else:
+    if risk >= 75:
         execute_clicked = st.button("Override")
+    else:
+        execute_clicked = st.button("Execute")
 
 with button_col[1]:
     hold_clicked = False
-    if risk <= 25 or risk < 75:
-        hold_clicked = st.button("Hold")
-    else:
+    if risk >= 75:
         hold_clicked = st.button("Escalate")
+    else:
+        hold_clicked = st.button("Hold")
 
 with button_col[2]:
     third_clicked = False
-    if risk < 75 and risk > 25:
+    if 25 < risk < 75:
         third_clicked = st.button("Escalate")
     elif risk >= 75:
         third_clicked = st.button("Block")
-
-st.markdown("")
 
 alert_col = st.columns([1, 1])
 
