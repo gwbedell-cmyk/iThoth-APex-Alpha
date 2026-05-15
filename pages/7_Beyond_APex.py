@@ -10,7 +10,7 @@ st.markdown("---")
 st.markdown("""
 <div style="
     background:#e6f2ff;
-    padding:30px;
+    padding:30px, 60px;
     border-radius:20px;
     box-shadow: 0 8px 24px rgba(15,23,42,0.08);
     width:50%;
