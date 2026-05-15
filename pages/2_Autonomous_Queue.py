@@ -4,6 +4,65 @@ from services.evaluator import evaluate_action
 
 st.set_page_config(layout="wide")
 
+def load_css():
+    with open("assets/css.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
+
+st.markdown("""
+<style>
+div[data-testid="stButton"] button[kind="secondary"] {
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    min-height: 42px !important;
+}
+
+/* Execute */
+div[data-testid="stButton"]:has(button[key*="execute"]) button {
+    background-color: #dbeafe !important;
+    color: #1e3a8a !important;
+    border: 1px solid #93c5fd !important;
+}
+
+/* Hold */
+div[data-testid="stButton"]:has(button[key*="hold"]) button {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+    border: 1px solid #fca5a5 !important;
+}
+
+/* Resume */
+div[data-testid="stButton"]:has(button[key*="resume"]) button {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+    border: 1px solid #86efac !important;
+}
+
+/* Escalate */
+div[data-testid="stButton"]:has(button[key*="escalate"]) button {
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
+    border: 1px solid #fcd34d !important;
+}
+
+/* Override */
+div[data-testid="stButton"]:has(button[key*="override"]) button {
+    background-color: #ede9fe !important;
+    color: #5b21b6 !important;
+    border: 1px solid #c4b5fd !important;
+}
+
+/* Cancel / Block */
+div[data-testid="stButton"]:has(button[key*="cancel"]) button,
+div[data-testid="stButton"]:has(button[key*="block"]) button {
+    background-color: #fecaca !important;
+    color: #7f1d1d !important;
+    border: 1px solid #f87171 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 with open("data/scenarios.json") as f:
     actions = json.load(f)
 
