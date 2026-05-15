@@ -54,7 +54,7 @@ for idx, item in enumerate(queue.copy()):
 
     with c2:
         st.write(f"Agent: {item['agent']}")
-        st.write(f"Risk Score: {item['risk']}")
+        st.write(f"APex Risk Score: {item['risk']}")
 
     with c3:
         st.write(f"Decision: {item['decision']}")
@@ -72,9 +72,9 @@ for idx, item in enumerate(queue.copy()):
                 st.rerun()
 
         elif item["status"] == "Review Required":
-            if st.button("Approve", key=f"approve_{idx}"):
+            if st.button("Execute", key=f"execute_review_{idx}"):
                 st.session_state.execution_queue.remove(item)
-                st.success(f"{item['id']} approved and executed.")
+                st.success(f"{item['id']} executed.")
                 st.rerun()
 
             if st.button("Hold", key=f"hold_review_{idx}"):
@@ -96,9 +96,9 @@ for idx, item in enumerate(queue.copy()):
                 st.rerun()
 
         elif item["status"] == "Escalated":
-            if st.button("Approve", key=f"approve_escalated_{idx}"):
+            if st.button("Execute", key=f"execute_escalated_{idx}"):
                 st.session_state.execution_queue.remove(item)
-                st.success(f"{item['id']} approved.")
+                st.success(f"{item['id']} executed.")
                 st.rerun()
 
             if st.button("Block", key=f"block_escalated_{idx}"):
