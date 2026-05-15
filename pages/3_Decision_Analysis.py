@@ -39,6 +39,8 @@ for item in evaluation["explanations"]:
 
 st.markdown("---")
 
+st.markdown("### APex Trust Evaluation")
+
 st.markdown(
     f"""
     <div style="
@@ -49,7 +51,7 @@ st.markdown(
         text-align:center;
     ">
         <h2>{evaluation['decision']}</h2>
-        <h3>Risk Score: {evaluation['risk_score']}</h3>
+        <h3>APex Risk Score: {evaluation['risk_score']}</h3>
     </div>
     """,
     unsafe_allow_html=True
@@ -59,16 +61,40 @@ st.markdown("---")
 
 st.subheader("Operator Controls")
 
-c1, c2, c3 = st.columns(3)
+risk = evaluation["risk_score"]
 
-if c1.button("Approve Execution"):
-    st.success("Execution approved.")
+if risk == 0:
+    c1, c2 = st.columns(2)
 
-if c2.button("Escalate Review"):
-    st.warning("Action escalated for human review.")
+    if c1.button("Execute"):
+        st.success("Execution initiated.")
 
-if c3.button("Block Execution"):
-    st.error("Execution blocked.")
+    if c2.button("Hold"):
+        st.warning("Execution placed on hold.")
+
+elif risk < 75:
+    c1, c2, c3 = st.columns(3)
+
+    if c1.button("Approve"):
+        st.success("Execution approved.")
+
+    if c2.button("Hold"):
+        st.warning("Execution placed on hold.")
+
+    if c3.button("Escalate"):
+        st.warning("Action escalated for human review.")
+
+else:
+    c1, c2, c3 = st.columns(3)
+
+    if c1.button("Override"):
+        st.warning("Override pathway initiated.")
+
+    if c2.button("Escalate"):
+        st.warning("Action escalated for executive review.")
+
+    if c3.button("Block"):
+        st.error("Execution blocked.")
 
 st.markdown("---")
 
