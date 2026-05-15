@@ -38,14 +38,21 @@ for policy in policies:
                 st.toggle(
                     "Disabled",
                     value=False,
-                    key=policy["id"],
+                    key=f"locked_{policy['id']}",
                     disabled=True
                 )
             else:
+                toggle_key = f"toggle_{policy['id']}"
+
+                if toggle_key not in st.session_state:
+                    st.session_state[toggle_key] = policy["enabled"]
+
                 enabled = st.toggle(
-                    "Enabled" if policy["enabled"] else "Disabled",
-                    value=policy["enabled"],
-                    key=policy["id"]
+                    "Enabled" if st.session_state[toggle_key] else "Disabled",
+                    value=st.session_state[toggle_key],
+                    key=toggle_key
                 )
+
+                st.session_state[toggle_key] = enabled
 
         st.markdown("---")
