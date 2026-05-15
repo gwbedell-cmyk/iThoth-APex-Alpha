@@ -10,22 +10,6 @@ def load_css():
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css()
-st.markdown("""
-<style>
-h1 {
-    color: #1e5eff !important;
-    font-size: 3rem !important;
-}
-
-h2 {
-    color: #2563eb !important;
-}
-
-h3 {
-    color: #60a5fa !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
 with open("data/scenarios.json") as f:
     actions = json.load(f)
