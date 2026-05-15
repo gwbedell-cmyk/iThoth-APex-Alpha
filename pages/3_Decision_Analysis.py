@@ -3,7 +3,6 @@ import json
 from datetime import datetime
 
 from services.evaluator import evaluate_action
-from services.ui_helpers import decision_color
 from services.audit import load_audit_log, save_audit_log
 
 st.set_page_config(layout="wide")
@@ -27,7 +26,6 @@ selected = st.selectbox(
 )
 
 evaluation = evaluate_action(selected)
-color = decision_color(evaluation["decision"])
 
 st.subheader("Proposed Autonomous Action")
 
@@ -54,14 +52,14 @@ with trust_col[0]:
     st.markdown(
         f"""
         <div style="
-            background:{color};
+            background:#fee2e2;
             padding:24px;
             border-radius:16px;
-            color:white !important;
             text-align:center;
+            border:1px solid #fca5a5;
         ">
-            <h2 style="color:white !important;">{evaluation['decision']}</h2>
-            <h3 style="color:white !important;">APex Risk Score: {evaluation['risk_score']}</h3>
+            <h2>{evaluation['decision']}</h2>
+            <h3>APex Risk Score: {evaluation['risk_score']}</h3>
         </div>
         """,
         unsafe_allow_html=True
