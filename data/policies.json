@@ -1,37 +1,142 @@
 [
   {
-    "id": "P-12",
-    "name": "Vendor Change Risk",
-    "description": "Flags recently modified vendor banking details.",
-    "weight": 30,
-    "enabled": true
-  },
-  {
-    "id": "P-19",
-    "name": "Approval Completeness",
-    "description": "Ensures approval chain is complete.",
-    "weight": 20,
-    "enabled": true
-  },
-  {
-    "id": "P-27",
-    "name": "Duplicate Detection",
-    "description": "Detects near-duplicate invoice submissions.",
+    "id": "P-01",
+    "name": "Duplicate Invoice Detection",
+    "description": "Prevents duplicate invoice submission or replay execution.",
     "weight": 35,
     "enabled": true
   },
   {
-    "id": "P-31",
-    "name": "Threshold Variance",
-    "description": "Flags invoice variance beyond approved PO tolerance.",
+    "id": "P-02",
+    "name": "Invoice Amount Threshold Enforcement",
+    "description": "Blocks transactions exceeding configured autonomous authority limits.",
+    "weight": 25,
+    "enabled": true
+  },
+  {
+    "id": "P-03",
+    "name": "Spend Category Compliance Validation",
+    "description": "Checks spend against approved procurement categories.",
+    "weight": 15,
+    "enabled": false
+  },
+  {
+    "id": "P-04",
+    "name": "Vendor Whitelist Validation",
+    "description": "Restricts autonomous execution to approved vendors.",
+    "weight": 20,
+    "enabled": true
+  },
+  {
+    "id": "P-05",
+    "name": "Vendor Bank Account Change Hold",
+    "description": "Triggers review when payment destination changes.",
+    "weight": 30,
+    "enabled": true
+  },
+  {
+    "id": "P-06",
+    "name": "Dynamic Vendor Trust Scoring",
+    "description": "Continuously evaluates vendor risk before execution. Requires enterprise trust intelligence module.",
+    "weight": 20,
+    "enabled": false
+  },
+  {
+    "id": "P-07",
+    "name": "Treasury Approval Threshold",
+    "description": "Requires escalation above treasury-defined exposure limits.",
+    "weight": 25,
+    "enabled": true
+  },
+  {
+    "id": "P-08",
+    "name": "Treasury Liquidity Pre-Check",
+    "description": "Confirms available liquidity before release. Requires treasury systems integration.",
+    "weight": 20,
+    "enabled": false
+  },
+  {
+    "id": "P-09",
+    "name": "Cross-Border Payment Review",
+    "description": "Applies heightened governance for international transfers.",
+    "weight": 30,
+    "enabled": true
+  },
+  {
+    "id": "P-10",
+    "name": "Segregation of Duties Enforcement",
+    "description": "Prevents fully autonomous end-to-end execution without separation controls.",
+    "weight": 25,
+    "enabled": true
+  },
+  {
+    "id": "P-11",
+    "name": "Policy Override Audit Logging",
+    "description": "Captures all governance overrides for auditability.",
+    "weight": 10,
+    "enabled": true
+  },
+  {
+    "id": "P-12",
+    "name": "Real-Time Governance Intervention",
+    "description": "Allows immediate interruption of autonomous actions.",
+    "weight": 25,
+    "enabled": true
+  },
+  {
+    "id": "P-13",
+    "name": "Payment Timing Anomaly Detection",
+    "description": "Flags unusual payment timing behavior.",
     "weight": 15,
     "enabled": true
   },
   {
-    "id": "P-42",
-    "name": "Vendor Risk Escalation",
-    "description": "Escalates high-risk vendor profiles.",
-    "weight": 10,
+    "id": "P-14",
+    "name": "AI Confidence Auto-Release",
+    "description": "Permits low-risk autonomous release under confidence thresholds.",
+    "weight": 15,
+    "enabled": false
+  },
+  {
+    "id": "P-15",
+    "name": "High-Risk Geography Review",
+    "description": "Applies jurisdiction-based risk governance.",
+    "weight": 20,
     "enabled": true
+  },
+  {
+    "id": "P-16",
+    "name": "Refund Approval Escalation",
+    "description": "Routes refund exceptions for approval.",
+    "weight": 20,
+    "enabled": true
+  },
+  {
+    "id": "P-17",
+    "name": "Emergency Exception Pathway",
+    "description": "Controlled fast-track execution for exceptional circumstances.",
+    "weight": 10,
+    "enabled": false
+  },
+  {
+    "id": "P-18",
+    "name": "Weekend Execution Restriction",
+    "description": "Blocks execution during restricted operational windows.",
+    "weight": 15,
+    "enabled": true
+  },
+  {
+    "id": "P-19",
+    "name": "ERP Reconciliation Pre-Approval",
+    "description": "Requires ledger reconciliation before execution. ERP connector required.",
+    "weight": 20,
+    "enabled": false
+  },
+  {
+    "id": "P-20",
+    "name": "Contract Compliance Validation",
+    "description": "Checks execution against contractual obligations. Contract intelligence module required.",
+    "weight": 15,
+    "enabled": false
   }
 ]
