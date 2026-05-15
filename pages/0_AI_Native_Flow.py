@@ -50,22 +50,28 @@ artifact_metadata = {
     }
 }
 
-st.markdown("""
-<h1 style='color:#1e5eff; margin-bottom:0.2rem;'>
-AI-native Enterprise Flow
-</h1>
-<p style='color:#4a90e2; font-size:1.05rem; margin-top:0;'>
-Enterprise context enters. AI proposes. APex governs.
-</p>
-""", unsafe_allow_html=True)
+st.title("AI-native Enterprise Flow")
+st.caption("Enterprise context enters. AI proposes. APex governs.")
 
 st.markdown("---")
 
-st.markdown("""
-<h3 style='color:#2563eb;'>
-Click an Artifact to Upload
-</h3>
-""", unsafe_allow_html=True)
+st.subheader("Click an Artifact to Upload")
+
+artifact_box_style = """
+<style>
+div.stButton > button {
+    background-color: #e6f2ff !important;
+    border: 1px solid #b3d9ff !important;
+    color: #0f2744 !important;
+    border-radius: 12px !important;
+    min-height: 90px !important;
+    white-space: normal !important;
+    font-weight: 600 !important;
+}
+</style>
+"""
+
+st.markdown(artifact_box_style, unsafe_allow_html=True)
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -114,11 +120,7 @@ if selected_artifact:
 
     st.markdown("---")
 
-    st.markdown("""
-    <h3 style='color:#2563eb;'>
-    Structured Extraction
-    </h3>
-    """, unsafe_allow_html=True)
+    st.subheader("Structured Extraction")
 
     st.write(f"Vendor: {artifact['vendor']}")
     st.write(f"Transaction Amount: {artifact['amount']}")
@@ -129,23 +131,14 @@ if selected_artifact:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown("""
-        <h3 style='color:#2563eb;'>
-        Proposed Autonomous Action
-        </h3>
-        """, unsafe_allow_html=True)
-
+        st.subheader("Proposed Autonomous Action")
         st.write(f"Action: {proposed['action_type']}")
         st.write(f"Vendor: {proposed['vendor_name']}")
         st.write(f"Amount: ${proposed['amount']:,.0f}")
         st.write(f"Agent Confidence: {int(proposed['confidence'] * 100)}%")
 
     with col2:
-        st.markdown("""
-        <h3 style='color:#2563eb;'>
-        APex Trust Evaluation
-        </h3>
-        """, unsafe_allow_html=True)
+        st.markdown("### APex Trust Evaluation")
 
         st.markdown(
             f"""
@@ -165,11 +158,7 @@ if selected_artifact:
 
     st.markdown("---")
 
-    st.markdown("""
-    <h3 style='color:#2563eb;'>
-    Triggered Findings
-    </h3>
-    """, unsafe_allow_html=True)
+    st.subheader("Triggered Findings")
 
     for finding in evaluation["explanations"]:
         st.write(f"• {finding}")
