@@ -40,6 +40,15 @@ small {
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
+/* FORCE ALL METRIC TEXT WHITE */
+[data-testid="stMetric"] *,
+[data-testid="stMetric"] label,
+[data-testid="stMetric"] div,
+[data-testid="stMetric"] span,
+[data-testid="stMetric"] p {
+    color: #ffffff !important;
+}
+
 /* METRIC TEXT */
 [data-testid="stMetric"] label,
 [data-testid="stMetric"] div,
