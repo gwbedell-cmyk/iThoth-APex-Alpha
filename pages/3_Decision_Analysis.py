@@ -8,10 +8,17 @@ from services.audit import load_audit_log, save_audit_log
 
 st.set_page_config(layout="wide")
 
+def load_css():
+    with open("assets/css.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
+
 with open("data/scenarios.json") as f:
     actions = json.load(f)
 
 st.title("Governance Decision Center")
+st.caption("Forensic review and governance intervention for autonomous execution")
 
 selected = st.selectbox(
     "Select Autonomous Action",
@@ -61,40 +68,55 @@ st.markdown("---")
 
 st.subheader("Operator Controls")
 
+button_col = st.columns([1, 1, 1, 4])
+
 risk = evaluation["risk_score"]
 
-if risk == 0:
-    c1, c2 = st.columns(2)
+with button_col[0]:
+    execute_clicked = False
+    if risk <= 25:
+        execute_clicked = st.button("Execute")
+    elif risk < 75:
+        execute_clicked = st.button("Execute")
+    else:
+        execute_clicked = st.button("Override")
 
-    if c1.button("Execute"):
-        st.success("Execution initiated.")
+with button_col[1]:
+    hold_clicked = False
+    if risk <= 25 or risk < 75:
+        hold_clicked = st.button("Hold")
+    else:
+        hold_clicked = st.button("Escalate")
 
-    if c2.button("Hold"):
-        st.warning("Execution placed on hold.")
+with button_col[2]:
+    third_clicked = False
+    if risk < 75 and risk > 25:
+        third_clicked = st.button("Escalate")
+    elif risk >= 75:
+        third_clicked = st.button("Block")
 
-elif risk < 75:
-    c1, c2, c3 = st.columns(3)
+st.markdown("")
 
-    if c1.button("Approve"):
-        st.success("Execution approved.")
+alert_col = st.columns([1, 1])
 
-    if c2.button("Hold"):
-        st.warning("Execution placed on hold.")
+with alert_col[0]:
+    if execute_clicked:
+        if risk >= 75:
+            st.warning("Override pathway initiated.")
+        else:
+            st.success("Execution initiated.")
 
-    if c3.button("Escalate"):
-        st.warning("Action escalated for human review.")
+    if hold_clicked:
+        if risk >= 75:
+            st.warning("Action escalated for executive review.")
+        else:
+            st.warning("Execution placed on hold.")
 
-else:
-    c1, c2, c3 = st.columns(3)
-
-    if c1.button("Override"):
-        st.warning("Override pathway initiated.")
-
-    if c2.button("Escalate"):
-        st.warning("Action escalated for executive review.")
-
-    if c3.button("Block"):
-        st.error("Execution blocked.")
+    if third_clicked:
+        if risk >= 75:
+            st.error("Execution blocked.")
+        else:
+            st.warning("Action escalated for human review.")
 
 st.markdown("---")
 
