@@ -14,7 +14,7 @@ st.markdown("""
     border-radius:20px;
     box-shadow: 0 8px 24px rgba(15,23,42,0.08);
     width:50%;
-    margin: 0 auto;
+    margin: 0 20px 0 0;
 ">
     <h2 style="text-align:center; color:#0f172a;">APex Architecture Stack</h2>
 </div>
