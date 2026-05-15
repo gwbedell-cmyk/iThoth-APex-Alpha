@@ -50,12 +50,22 @@ artifact_metadata = {
     }
 }
 
-st.title("AI-native Enterprise Flow")
-st.caption("Enterprise context enters. AI proposes. APex governs.")
+st.markdown("""
+<h1 style='color:#1e5eff; margin-bottom:0.2rem;'>
+AI-native Enterprise Flow
+</h1>
+<p style='color:#4a90e2; font-size:1.05rem; margin-top:0;'>
+Enterprise context enters. AI proposes. APex governs.
+</p>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
 
-st.subheader("Click an Artifact to Upload")
+st.markdown("""
+<h3 style='color:#2563eb;'>
+Click an Artifact to Upload
+</h3>
+""", unsafe_allow_html=True)
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -104,7 +114,11 @@ if selected_artifact:
 
     st.markdown("---")
 
-    st.subheader("Structured Extraction")
+    st.markdown("""
+    <h3 style='color:#2563eb;'>
+    Structured Extraction
+    </h3>
+    """, unsafe_allow_html=True)
 
     st.write(f"Vendor: {artifact['vendor']}")
     st.write(f"Transaction Amount: {artifact['amount']}")
@@ -115,14 +129,23 @@ if selected_artifact:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("Proposed Autonomous Action")
+        st.markdown("""
+        <h3 style='color:#2563eb;'>
+        Proposed Autonomous Action
+        </h3>
+        """, unsafe_allow_html=True)
+
         st.write(f"Action: {proposed['action_type']}")
         st.write(f"Vendor: {proposed['vendor_name']}")
         st.write(f"Amount: ${proposed['amount']:,.0f}")
         st.write(f"Agent Confidence: {int(proposed['confidence'] * 100)}%")
 
     with col2:
-        st.markdown("### APex Trust Evaluation")
+        st.markdown("""
+        <h3 style='color:#2563eb;'>
+        APex Trust Evaluation
+        </h3>
+        """, unsafe_allow_html=True)
 
         st.markdown(
             f"""
@@ -142,14 +165,18 @@ if selected_artifact:
 
     st.markdown("---")
 
-    st.subheader("Triggered Findings")
+    st.markdown("""
+    <h3 style='color:#2563eb;'>
+    Triggered Findings
+    </h3>
+    """, unsafe_allow_html=True)
 
     for finding in evaluation["explanations"]:
         st.write(f"• {finding}")
 
     st.markdown("---")
 
-    if evaluation["risk_score"] == 0:
+    if evaluation["risk_score"] <= 25:
         if st.button("Execute"):
             st.success("Execution initiated.")
     else:
