@@ -1,9 +1,5 @@
 section.main > div {
-    background: linear-gradient(
-        180deg,
-        #f8fbff 0%,
-        #eef5ff 100%
-    );
+    background-color: #f8fafc;
 }
 
 .block-container {
@@ -12,25 +8,22 @@ section.main > div {
     max-width: 1500px;
 }
 
-/* MAIN TITLES */
+/* PAGE TITLES */
 h1 {
-    color: #0f2744 !important;
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 0.3rem;
+    color: #1e5eff !important;
+    font-size: 2.3rem;
+    font-weight: 700;
 }
 
-/* SECTION HEADERS */
+/* SECTION HEADERS / SUBTITLES */
 h2 {
-    color: #1e5eff !important;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    color: #2563eb !important;
+    font-weight: 650;
 }
 
 h3 {
-    color: #2f6fd6 !important;
-    font-weight: 650;
+    color: #3b82f6 !important;
+    font-weight: 600;
 }
 
 /* BODY TEXT */
@@ -38,30 +31,30 @@ p,
 div,
 span,
 label {
-    color: #142132 !important;
+    color: #111827 !important;
 }
 
 small {
-    color: #5f6b7a !important;
+    color: #475569 !important;
 }
 
-/* CAPTIONS */
+/* STREAMLIT CAPTIONS */
 [data-testid="stCaptionContainer"] {
-    color: #4a90e2 !important;
+    color: #3b82f6 !important;
     font-weight: 500;
 }
 
-/* METRIC CARDS */
+/* METRIC CARDS — UNCHANGED */
 [data-testid="stMetric"] {
     background: linear-gradient(
         145deg,
-        rgba(15,39,68,0.98),
-        rgba(30,94,255,0.95)
+        rgba(15,23,42,0.98),
+        rgba(30,41,59,0.95)
     );
-    border: 1px solid rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 18px;
     border-radius: 18px;
-    box-shadow: 0 10px 28px rgba(15,39,68,0.22);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
 /* METRIC TEXT */
@@ -73,12 +66,7 @@ small {
 
 /* SIDEBAR */
 [data-testid="stSidebar"] {
-    background: linear-gradient(
-        180deg,
-        #0f172a 0%,
-        #102a4d 100%
-    );
-    border-right: 1px solid rgba(255,255,255,0.05);
+    background-color: #0f172a;
 }
 
 /* SIDEBAR TEXT */
@@ -86,51 +74,15 @@ small {
     color: white !important;
 }
 
-/* BUTTONS */
-.stButton > button {
-    background: linear-gradient(
-        135deg,
-        #1e5eff,
-        #4a90e2
-    );
-    color: white !important;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    padding: 0.55rem 1rem;
-    box-shadow: 0 6px 18px rgba(30,94,255,0.20);
-    transition: all 0.2s ease;
-}
-
-.stButton > button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px rgba(30,94,255,0.28);
-}
-
-/* DATAFRAMES */
 .stDataFrame {
     border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(30,94,255,0.08);
-    box-shadow: 0 8px 22px rgba(15,39,68,0.08);
 }
 
-/* EXPANDERS */
-details {
-    background: rgba(255,255,255,0.88);
-    border-radius: 14px;
-    border: 1px solid rgba(30,94,255,0.08);
-    padding: 0.4rem;
-    box-shadow: 0 6px 18px rgba(15,39,68,0.05);
+hr {
+    border-color: rgba(15,23,42,0.08);
 }
 
-/* ALERTS */
 .stAlert {
     border-radius: 14px;
-    border: 1px solid rgba(30,94,255,0.08);
-}
-
-/* DIVIDERS */
-hr {
-    border-color: rgba(30,94,255,0.08);
 }
