@@ -18,6 +18,7 @@ st.caption("Governance controls for autonomous enterprise execution")
 
 for policy in policies:
     locked = policy["id"] in LOCKED_POLICIES
+    toggle_key = f"toggle_{policy['id']}"
 
     with st.container():
         col1, col2, col3 = st.columns([1, 4, 1])
@@ -42,17 +43,14 @@ for policy in policies:
                     disabled=True
                 )
             else:
-                toggle_key = f"toggle_{policy['id']}"
-
                 if toggle_key not in st.session_state:
                     st.session_state[toggle_key] = policy["enabled"]
 
-                enabled = st.toggle(
-                    "Enabled" if st.session_state[toggle_key] else "Disabled",
-                    value=st.session_state[toggle_key],
+                current_state = st.session_state[toggle_key]
+
+                st.toggle(
+                    "Enabled" if current_state else "Disabled",
                     key=toggle_key
                 )
-
-                st.session_state[toggle_key] = enabled
 
         st.markdown("---")
