@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 st.title("Beyond APex")
-st.caption("The expansion path from AP trust controls to universal autonomous economic execution")
+st.caption("From autonomous trust controls to governed economic execution infrastructure")
 
 st.markdown("---")
 
@@ -13,6 +13,8 @@ st.markdown("""
     padding:30px;
     border-radius:20px;
     box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+    width:50%;
+    margin: 0 auto;
 ">
     <h2 style="text-align:center; color:#0f172a;">APex Architecture Stack</h2>
 </div>
@@ -28,6 +30,8 @@ st.markdown("""
     border-radius:18px;
     color:white;
     text-align:center;
+    width:50%;
+    margin: 0 auto;
 ">
     <h2>APex</h2>
     <p style="color:white;">
@@ -49,6 +53,8 @@ st.markdown("""
     border-radius:18px;
     color:white;
     text-align:center;
+    width:50%;
+    margin: 0 auto;
 ">
     <h2>EPCs</h2>
     <p style="color:white;">
@@ -70,6 +76,8 @@ st.markdown("""
     border-radius:18px;
     color:white;
     text-align:center;
+    width:50%;
+    margin: 0 auto;
 ">
     <h2>SettlementOS</h2>
     <p style="color:white;">
@@ -83,9 +91,9 @@ st.markdown("---")
 st.subheader("Strategic Expansion")
 
 st.write("""
-APex begins as independent trust control for autonomous enterprise execution.
+APex is the initial enterprise trust-control wedge.
 
-The same governance architecture extends naturally into transaction-scoped
-programmable treasury execution (EPCs), and ultimately into SettlementOS:
-a universal governed substrate for autonomous economic workflows.
+The underlying architecture extends naturally into programmable treasury execution
+and ultimately into a universal governed settlement substrate for autonomous
+economic workflows.
 """)
