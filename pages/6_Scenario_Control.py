@@ -18,6 +18,14 @@ amount = st.slider(
     step=5000
 )
 
+agent_confidence = st.slider(
+    "Agent Confidence (%)",
+    min_value=50,
+    max_value=100,
+    value=92,
+    step=1
+)
+
 vendor_risk = st.selectbox(
     "Vendor Risk Profile",
     ["Low", "Medium", "High"]
@@ -34,6 +42,9 @@ urgency = st.selectbox(
 )
 
 weekend = st.toggle("Weekend Execution Request")
+vendor_bank_modified = st.toggle("Vendor Banking Modified")
+approval_complete = st.toggle("Approval Chain Complete", value=True)
+duplicate_submission = st.toggle("Duplicate Submission Suspected")
 
 st.markdown("---")
 
@@ -45,6 +56,16 @@ if amount > 100000:
     risk_score += 35
     findings.append("High-value transaction exceeds autonomous execution threshold.")
     policies.append("Invoice Amount Threshold Enforcement")
+
+if agent_confidence < 85:
+    risk_score += 20
+    findings.append("Reduced agent confidence increases governance uncertainty.")
+    policies.append("AI Confidence Review")
+
+if agent_confidence < 70:
+    risk_score += 35
+    findings.append("Agent confidence below safe autonomous execution threshold.")
+    policies.append("AI Confidence Escalation")
 
 if vendor_risk == "Medium":
     risk_score += 15
@@ -81,6 +102,21 @@ if weekend:
     findings.append("Weekend execution violates standard operating controls.")
     policies.append("Weekend Execution Restriction")
 
+if vendor_bank_modified:
+    risk_score += 30
+    findings.append("Vendor banking details recently modified.")
+    policies.append("Vendor Bank Account Change Hold")
+
+if not approval_complete:
+    risk_score += 25
+    findings.append("Approval chain incomplete.")
+    policies.append("Approval Completeness Validation")
+
+if duplicate_submission:
+    risk_score += 35
+    findings.append("Possible duplicate submission detected.")
+    policies.append("Duplicate Invoice Detection")
+
 if risk_score <= 25:
     decision = "EXECUTE"
 elif risk_score < 75:
@@ -96,10 +132,14 @@ with col1:
     st.subheader("Simulated Autonomous Proposal")
 
     st.write(f"Transaction Amount: ${amount:,.0f}")
+    st.write(f"Agent Confidence: {agent_confidence}%")
     st.write(f"Vendor Risk: {vendor_risk}")
     st.write(f"Geography: {geography}")
     st.write(f"Urgency: {urgency}")
     st.write(f"Weekend Execution: {'Yes' if weekend else 'No'}")
+    st.write(f"Vendor Banking Modified: {'Yes' if vendor_bank_modified else 'No'}")
+    st.write(f"Approval Chain Complete: {'Yes' if approval_complete else 'No'}")
+    st.write(f"Duplicate Submission Suspected: {'Yes' if duplicate_submission else 'No'}")
 
 with col2:
     st.subheader("APex Trust Evaluation")
