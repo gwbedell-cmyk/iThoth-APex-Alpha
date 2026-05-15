@@ -143,7 +143,7 @@ if selected_artifact:
 
     st.markdown("---")
 
-    if evaluation["risk_score"] == 0:
+    if evaluation["risk_score"] <= 25:
         if st.button("Execute"):
             st.success("Execution initiated.")
     else:
